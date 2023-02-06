@@ -1,29 +1,22 @@
 <script>
 import {onMount} from 'svelte'
 import QRCode from 'qrcode';
+import {drawGrid}  from './grid.ts';
+import {pagesetting,pagestarts,page} from './store.ts'
+export let units;
+let ctx;
 
-const drawQRCode=async (text,x=0,y=0)=>{
-  const str=await QRCode.toString(text,{
-    errorCorrectionLevel: 'L' ,type:'svg'});
-  const qrwidth=1;
-  let svgpath=str.match(/0" d="(.+?)"/)[1].replace(/[\d\.]+/g, (m)=>parseFloat(m)*qrwidth)
-  
-  svgpath=svgpath.replace(/M(\d+) (\d+)/g,(m,m1,m2)=>{
-    return 'M'+(parseFloat(m1)+x)+' '+(parseFloat(m2)+y)
-  });
-
-  return svgpath;
-}
 onMount(async ()=>{
     const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-   
-    const svgdata=await drawQRCode('https://ACCELON.GITHUB.IO/CM:DG:2451',210,25);
-    const svgdata2=await drawQRCode('https://dharma.github.io/abcsdawdafffff',20,70);
+    ctx = canvas.getContext('2d');
 
-    ctx.lineWidth=1;
-    const path = new Path2D(svgdata)
-    const path2 = new Path2D(svgdata2)
+   
+    // const svgdata=await drawQRCode('https://ACCELON.GITHUB.IO/CM:DG:2451xxxxx',210,23);
+    // const svgdata2=await drawQRCode('https://dharma.github.io/abcsdawdafffff',20,70);
+
+    // ctx.lineWidth=1;
+    // const path = new Path2D(svgdata)
+    // const path2 = new Path2D(svgdata2)
     // let path1 = new Path2D();
     // path1.rect(10, 10, 100, 100);
 
@@ -32,12 +25,21 @@ onMount(async ()=>{
     // path2.arc(170, 60, 50, 0, 2 * Math.PI);
 
     //ctx.stroke(path2);
-    ctx.stroke(path)
-    ctx.stroke(path2)
+    // ctx.stroke(path)
+    // ctx.stroke(path2)
 
-    ctx.font='32px DFKai-SB'
-    ctx.fillText('如是我聞一時  佛在舍衛城祇樹給孤獨園',20,50)
+    // ctx.font='32px DFKai-SB'
+    // ctx.fillText('如是我聞一時佛在舍衛城祇樹給孤獨',20,50)
+    
+    // const units='如是我聞一時佛在舍衛城祇樹給孤獨園與大比丘僧千二百五十人'.split('').map(it=>{
+    //     return {adv:true,t:it}
+    // })
+    
+    //unit_h:14,unit_v:14,  horizontal
+    //            vertical
+    
 })
+$: ctx&&units&& drawGrid(units,ctx,$pagesetting, $pagestarts[$page]);
 </script>
 
 

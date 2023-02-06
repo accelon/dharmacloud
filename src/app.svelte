@@ -2,15 +2,16 @@
 import SplitPane  from './3rdparty/splitpane.svelte';
 import Preview from './preview.svelte'
 import EditorMain from './editormain.svelte';
-import {panepos} from './store.ts'
+import {panepos,renderUnits} from './store.ts'
+
 </script>
 <div class="wrapper">
 <SplitPane type="horizontal" bind:pos={$panepos}>
     <div slot="a">
-        <EditorMain/>
+        <EditorMain />
     </div>
     <div slot="b">
-        <Preview/>
+        <Preview units={$renderUnits}/>
     </div>
 </SplitPane>
 </div>
