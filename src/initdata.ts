@@ -1,4 +1,4 @@
-export const initdata=`^bk#vcpp_kumarajiva〔金剛般若波羅蜜經〕^au〔姚秦三藏鳩摩羅什譯　〕
+export const initdata=`^bk#vcpp〔金剛般若波羅蜜經〕^au〔姚秦三藏鳩摩羅什譯　〕
 ^ck1〔法會因由〕
 如是我聞：一時，
 佛在舍衛國祇樹給孤獨園，與大比丘眾千二百五十人俱。

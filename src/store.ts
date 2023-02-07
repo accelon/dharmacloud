@@ -9,3 +9,4 @@ fontname:'DFKai-SB', fontsize:36});
 export const page=writable(0);
 export const bkname=writable('');
 export const cmhandle=writable(null);
+export const printpagenumber=writable(false);

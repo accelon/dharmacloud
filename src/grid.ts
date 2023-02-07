@@ -124,7 +124,7 @@ const drawPagenumber=(ctx,pagenumber,opts)=>{
     drawText(ctx,pagenumber,width/2,5, opts.fontsize,opts.fontsize);
     setFont(ctx,fontsize,fontname)
 }
-export const drawGrid=async (units,ctx,opts,start=0,pagenumber)=>{
+export const drawGrid=async (units,ctx,opts,start=0,pagenumber='')=>{
     const {fontsize,fontname,unit_h,unit_v} = opts;
     
     let {width,height,paper, size,
@@ -137,7 +137,7 @@ export const drawGrid=async (units,ctx,opts,start=0,pagenumber)=>{
     setFont(ctx,fontsize,fontname)
     
 
-    drawPagenumber(ctx,pagenumber,opts);
+    pagenumber&&drawPagenumber(ctx,pagenumber,opts);
 
     let x=0,y=0,w=size,h=size, unit;
     if (unit_h*1.5>unit_v) { //horizontal

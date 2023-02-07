@@ -12,7 +12,6 @@ const calPage=async (units)=>{
     return out;    
 }
 export const splitUnit=async (value)=>{
-
     const [text,tags]=parseOfftext(value);
     const chars=splitUTF32Char(text);
     let ntag=0, lineoff=0,ck='',tag, 
@@ -44,7 +43,7 @@ export const splitUnit=async (value)=>{
         } else {
             if (ch=='\n') {
                 if (i&& chars[i-1]!=='\n') {
-                    units.push({adv:true, t:'https://dharma.github.io/?'+ck+':'+lineoff ,  type:'qrcode'})
+                    units.push({adv:true, t:'https://DHARMACLOUD.GITHUB.IO/?'+get(bkname)+'.'+ck+':'+lineoff ,  type:'qrcode'})
                 }
                 lineoff++;
             }
