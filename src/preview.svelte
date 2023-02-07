@@ -10,7 +10,6 @@ onMount(async ()=>{
     const canvas = document.getElementById('canvas');
     ctx = canvas.getContext('2d');
 
-   
     // const svgdata=await drawQRCode('https://ACCELON.GITHUB.IO/CM:DG:2451xxxxx',210,23);
     // const svgdata2=await drawQRCode('https://dharma.github.io/abcsdawdafffff',20,70);
 
@@ -39,9 +38,12 @@ onMount(async ()=>{
     //            vertical
     
 })
-$: ctx&&units&& drawGrid(units,ctx,$pagesetting, $pagestarts[$page]);
+$: ctx&&units&& drawGrid(units,ctx,$pagesetting, $pagestarts[$page],$page+1);
 </script>
 
 
-<canvas id="canvas" width="595" height="841" style="background:white">
+<canvas id="canvas" width="595" height="841">
 </canvas>
+<style>
+    #canvas {width:1190;height: 1682}
+</style>

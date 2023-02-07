@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "esbuild": "^0.17.5",
+    "esbuild-svelte": "^0.7.3",
+    "pdfkit": "^0.13.0",
+    "qrcode": "^1.5.1",
+    "svelte": "^3.55.1"
+  },
+  "name": "dharmacloud",
+  "description": "dharmacloud selected text",
+  "version": "1.0.0",
+  "main": "testprint.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/accelon/dharmacloud.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/accelon/dharmacloud/issues"
+  },
+  "homepage": "https://github.com/accelon/dharmacloud#readme"
+}

@@ -1,4 +1,4 @@
-import {pagesetting,renderUnits,pagestarts } from './store.ts'
+import {pagesetting,renderUnits,pagestarts,bkname } from './store.ts'
 import {parseOfftext,CJKRangeName,splitUTF32Char} from 'ptk'
 import {get} from 'svelte/store';
 import { drawGrid } from './grid.ts';
@@ -31,6 +31,8 @@ export const splitUnit=async (value)=>{
                 ck=tag.attrs.id;
                 inverse=true;
                 closeat=tag?.choff+tag?.width;
+            } else if (tag.name=='bk') {
+                bkname.set(tag.attrs.id);
             }
             ntag++;
             lineoff=0;

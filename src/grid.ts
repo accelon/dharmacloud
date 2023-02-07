@@ -8,14 +8,18 @@ const layouts={
         chargap:3,
         linewidth:1.5,
         // charframe:true,
-        topmargin:50,
+        topmargin:30,
         rightmargin:30,
         leftmargin:30,
     }
 }
 
 const drawCharFrame=(ctx,x,y,w,h)=>{
-    ctx.strokeRect(x,y,w,h);
+    if (ctx instanceof CanvasRenderingContext2D) {
+        ctx.strokeRect(x,y,w,h);
+    } else {
+        ctx.rect(x,y,w,h).stroke();
+    }
 }
 const verticalPunc=t=>{
     let at= '「『（【〔《'.indexOf(t);
@@ -29,7 +33,7 @@ const verticalPunc=t=>{
     }    
     return t;
 }
-const drawQRCode=async(text,x=0,y=0)=>{
+const genQRCode=async(text,x=0,y=0)=>{
     const str=await QRCode.toString(text,{
     type:'svg'});
     const qrwidth=1;
@@ -40,63 +44,100 @@ const drawQRCode=async(text,x=0,y=0)=>{
     });
 
     return svgpath;
-  }
+}
+const drawSVG=(ctx,svg)=>{
+    if (ctx instanceof CanvasRenderingContext2D) {
+        const path = new Path2D(svg)
+        ctx.stroke(path) ;
+    } else {
+        ctx.path(svg).stroke();
+    }
+}
+const drawText=(ctx,t,x,y,w,h)=>{
+    if (ctx instanceof CanvasRenderingContext2D) {
+        y+=w*.8;
+        ctx.fillText(t,x,y)
+    } else {
+        ctx.fontSize(36);
+        ctx.font('DFKai-SB')
+        ctx.text(t,x,y);
+    }
+}
 const drawUnit=async (ctx,unit,x,y,w,h,vertical=false)=>{
     let {t}=unit;
     if (unit.type=='punc' && t!=='　') {
         if (vertical ) {
             if (~'。，：！？；'.indexOf(t) ){
-                x+=h*0.5;
-                y+=w*0.5;    
+                x+=h*0.6;
+                y+=w*0.25;    
             } else {
-                y+=w*0.5;
+                y+=w*0.25;
             }
             if (~'！：；？'.indexOf(t)) {
-                y-=w*0.5;
+                // y-=w*0.5;
             }
             t=verticalPunc(t);
         }
-        if (~'。，！？?；：「『（《」』）》﹁﹃︻︵︽﹂﹄︼︶︾'.indexOf(t)) {
-            ctx.fillText(t,x,y+w*0.8)            
+        //「『（《」』）》﹁﹃︻︵︽﹂﹄︼︶︾ , pdf cannot draw correctly, create new page
+        if (~'。，！？?；：'.indexOf(t)) {
+            drawText(ctx,t,x,y,w,h)
         }
     } else if (unit.type=='qrcode') {
         if (unit.t) {            
-            const svgdata=await drawQRCode(unit.t,x,y);
-            const path = new Path2D(svgdata)
-            ctx.stroke(path)    
+            const svgdata=await genQRCode(unit.t,x,y);
+            drawSVG(ctx,svgdata);
+ 
         }
     } else {
-
         if (unit.t) {
             if (unit.inverse) {
-                ctx.fillStyle='silver';
-                ctx.fillRect(x,y,w,h);
-                ctx.fillStyle='white';
-                ctx.fillText(unit.t,x,y+w*0.8)
-                ctx.fillStyle='black';
-            }  else {
-                ctx.fillText(unit.t,x,y+w*0.8)
+                drawCharFrame(ctx,x,y,w,h);
             }
-            ctx.fillText(unit.t,x,y+w*0.8)
+            drawText(ctx,unit.t,x,y,w,h)
         }
     
     }
 }
+const clearPaper=(ctx,width,height)=>{
+    if (!ctx)return;
+    if (ctx instanceof CanvasRenderingContext2D) {
+        ctx.fillStyle='white';
+        ctx.fillRect(0,0,width,height)
+        ctx.fillStyle='black';       
+    }
+}
 
-export const drawGrid=async (units,ctx,opts,start=0)=>{
-    const {font,unit_h, unit_v} = opts;
-    if (ctx && font) ctx.font=opts.font;
-    const {width,height,paper, size,
+const setFont=(ctx,fontsize,fontname)=>{
+    if (!ctx)return;
+    if (ctx instanceof CanvasRenderingContext2D) {
+        ctx.font=fontsize+'px '+fontname;
+    } else {      
+        ctx.fontSize(fontsize);
+        ctx.font(fontname);
+    }
+}
+const drawPagenumber=(ctx,pagenumber,opts)=>{
+    if (!ctx)return;
+    const {width,height}=layouts[opts.layout];
+    const {fontsize,fontname}=opts;
+    setFont(ctx,16,'Courier');
+    drawText(ctx,pagenumber,width/2,5, opts.fontsize,opts.fontsize);
+    setFont(ctx,fontsize,fontname)
+}
+export const drawGrid=async (units,ctx,opts,start=0,pagenumber)=>{
+    const {fontsize,fontname,unit_h,unit_v} = opts;
+    
+    let {width,height,paper, size,
         topmargin,rightmargin,leftmargin,
         charframe,chargap,linewidth} =layouts[opts.layout];
 
     let p=start;
 
-    if (ctx) {
-        ctx.fillStyle='white';
-        ctx.fillRect(0,0,width,height)
-        ctx.fillStyle='black';    
-    }
+    clearPaper(ctx,width,height);
+    setFont(ctx,fontsize,fontname)
+    
+
+    drawPagenumber(ctx,pagenumber,opts);
 
     let x=0,y=0,w=size,h=size, unit;
     if (unit_h*1.5>unit_v) { //horizontal
