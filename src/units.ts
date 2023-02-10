@@ -1,11 +1,11 @@
-import {pagesetting,renderUnits,pagestarts,bkname } from './store.ts'
+import {pagelayout,renderUnits,pagestarts,bkname } from './store.ts'
 import {parseOfftext,CJKRangeName,splitUTF32Char} from 'ptk'
 import {get} from 'svelte/store';
 import { drawGrid } from './grid.ts';
 const calPage=async (units)=>{
     let p=0,out=[0];
     while (p<units.length) {
-        p=await drawGrid(units,null,get(pagesetting),p);
+        p=await drawGrid(units,null,get(pagelayout),p);
         out.push(p);
     }
     out.push(p);

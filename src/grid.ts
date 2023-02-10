@@ -1,18 +1,6 @@
 import QRCode from 'qrcode'
+import { layouts } from './layout.ts';
 
-const layouts={
-    'a4':{
-        size:36,
-        width:595,
-        height:841,
-        chargap:3,
-        linewidth:1.5,
-        // charframe:true,
-        topmargin:30,
-        rightmargin:30,
-        leftmargin:30,
-    }
-}
 
 const drawCharFrame=(ctx,x,y,w,h)=>{
     if (ctx instanceof CanvasRenderingContext2D) {
@@ -53,34 +41,45 @@ const drawSVG=(ctx,svg)=>{
         ctx.path(svg).stroke();
     }
 }
-const drawText=(ctx,t,x,y,w,h)=>{
+const drawText=(ctx,t,x,y,w,h,layout)=>{
+    setFont(ctx,layout.fontsize,layout.fontname);
     if (ctx instanceof CanvasRenderingContext2D) {
         y+=w*.8;
         ctx.fillText(t,x,y)
     } else {
-        ctx.fontSize(36);
-        ctx.font('DFKai-SB')
         ctx.text(t,x,y);
     }
 }
-const drawUnit=async (ctx,unit,x,y,w,h,vertical=false)=>{
-    let {t}=unit;
+const drawUnit=async (ctx,unit,x,y,w,h,layout)=>{
+    let {t}=unit, fontratio=1;
     if (unit.type=='punc' && t!=='　') {
-        if (vertical ) {
+        if (layout.vertical ) {
+            t=verticalPunc(t);
             if (~'。，：！？；'.indexOf(t) ){
                 x+=h*0.6;
-                y+=w*0.25;    
+                y+=w*0.5;    
             } else {
-                y+=w*0.25;
+                y+=w*0.5;
             }
-            if (~'！：；？'.indexOf(t)) {
-                // y-=w*0.5;
+            if (~'「『」』﹁﹃﹂﹄'.indexOf(t)) {
+                
+                if (~'﹂﹄'.indexOf(t)) {
+                    y+=w*0.1;
+                }
             }
-            t=verticalPunc(t);
+            if (~'！？'.indexOf(t)) {
+                x+=h*0.15;
+                y-=w*0.15;
+                fontratio=0.6;
+            }
+            
         }
         //「『（《」』）》﹁﹃︻︵︽﹂﹄︼︶︾ , pdf cannot draw correctly, create new page
-        if (~'。，！？?；：'.indexOf(t)) {
-            drawText(ctx,t,x,y,w,h)
+        if (~'。，！？?；：「『」』﹁﹃﹂﹄'.indexOf(t)) {
+            const fontsize=layout.fontsize;
+            layout.fontsize=fontsize*fontratio;
+            drawText(ctx,t,x,y,w,h,layout);
+            layout.fontsize=fontsize;
         }
     } else if (unit.type=='qrcode') {
         if (unit.t) {            
@@ -93,7 +92,7 @@ const drawUnit=async (ctx,unit,x,y,w,h,vertical=false)=>{
             if (unit.inverse) {
                 drawCharFrame(ctx,x,y,w,h);
             }
-            drawText(ctx,unit.t,x,y,w,h)
+            drawText(ctx,unit.t,x,y,w,h,layout)
         }
     
     }
@@ -116,28 +115,26 @@ const setFont=(ctx,fontsize,fontname)=>{
         ctx.font(fontname);
     }
 }
-const drawPagenumber=(ctx,pagenumber,opts)=>{
+const drawPagenumber=(ctx,pagenumber,layout)=>{
     if (!ctx)return;
-    const {width,height}=layouts[opts.layout];
-    const {fontsize,fontname}=opts;
+    const {width,height,fontsize,fontname}=layout;
     setFont(ctx,16,'Courier');
-    drawText(ctx,pagenumber,width/2,5, opts.fontsize,opts.fontsize);
+    drawText(ctx,pagenumber,width/2,5, layout);
     setFont(ctx,fontsize,fontname)
 }
-export const drawGrid=async (units,ctx,opts,start=0,pagenumber='')=>{
-    const {fontsize,fontname,unit_h,unit_v} = opts;
-    
+export const drawGrid=async (units,ctx,layoutname,start=0,pagenumber='')=>{
+    const layout=layouts[layoutname];
     let {width,height,paper, size,
+        fontsize,fontname,unit_h,unit_v,
         topmargin,rightmargin,leftmargin,
-        charframe,chargap,linewidth} =layouts[opts.layout];
+        charframe,chargap,linewidth} = layout;
 
     let p=start;
 
     clearPaper(ctx,width,height);
     setFont(ctx,fontsize,fontname)
     
-
-    pagenumber&&drawPagenumber(ctx,pagenumber,opts);
+    pagenumber&&drawPagenumber(ctx,pagenumber,layout);
 
     let x=0,y=0,w=size,h=size, unit;
     if (unit_h*1.5>unit_v) { //horizontal
@@ -147,7 +144,7 @@ export const drawGrid=async (units,ctx,opts,start=0,pagenumber='')=>{
             for (let j=0;j<unit_v;j++) {
                 if (charframe&&ctx) drawCharFrame(ctx,x,y,w,h);
 
-                unit && ctx && await drawUnit(ctx,units[p],x,y,w,h);
+                unit && ctx && await drawUnit(ctx,units[p],x,y,w,h,layout);
                 p++;
                 unit=units[p];
                 while (unit && !unit.adv) {
@@ -164,10 +161,10 @@ export const drawGrid=async (units,ctx,opts,start=0,pagenumber='')=>{
             y=topmargin;
             for (let j=0;j<unit_v;j++){
                 if (charframe&&ctx) drawCharFrame(ctx,x,y,w,h);
-                units[p] && ctx  && await drawUnit(ctx,units[p],x,y,w,h,true);                
+                units[p] && ctx  && await drawUnit(ctx,units[p],x,y,w,h,layout);                
                 p++;
                 while (units[p]&&!units[p].adv)  {
-                    units[p] && ctx  && await drawUnit(ctx,units[p],x,y,w,h,true);                
+                    units[p] && ctx  && await drawUnit(ctx,units[p],x,y,w,h,layout);                
                     p++;
                 }
                  y+=(size+chargap);

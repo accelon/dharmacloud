@@ -1,8 +1,7 @@
 <script>
 import {onMount} from 'svelte'
-import QRCode from 'qrcode';
 import {drawGrid}  from './grid.ts';
-import {pagesetting,pagestarts,page,printpagenumber} from './store.ts'
+import {pagelayout,pagestarts,page,printpagenumber} from './store.ts'
 export let units;
 let ctx;
 
@@ -38,7 +37,7 @@ onMount(async ()=>{
     //            vertical
     
 })
-$: ctx&&units&& drawGrid(units,ctx,$pagesetting, $pagestarts[$page],$printpagenumber?$page+1:'');
+$: ctx&&units&& drawGrid(units,ctx,$pagelayout, $pagestarts[$page],$printpagenumber?$page+1:'');
 </script>
 
 
