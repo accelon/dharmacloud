@@ -118,9 +118,12 @@ const setFont=(ctx,fontsize,fontname)=>{
 const drawPagenumber=(ctx,pagenumber,layout)=>{
     if (!ctx)return;
     const {width,height,fontsize,fontname}=layout;
-    setFont(ctx,16,'Courier');
-    drawText(ctx,pagenumber,width/2,5, layout);
-    setFont(ctx,fontsize,fontname)
+    layout.fontsize=20;
+    layout.fontname='Courier';
+    drawText(ctx,pagenumber,width/2,layout.height-35,20,20 , layout);
+    layout.fontsize=fontsize;
+    layout.fontname=fontname;
+
 }
 export const drawGrid=async (units,ctx,layoutname,start=0,pagenumber='')=>{
     const layout=layouts[layoutname];
