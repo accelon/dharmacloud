@@ -55,7 +55,7 @@ const drawUnit=async (ctx,unit,x,y,w,h,layout)=>{
     if (unit.type=='punc' && t!=='　') {
         if (layout.vertical ) {
             t=verticalPunc(t);
-            if (~'。，：！？；'.indexOf(t) ){
+            if (~'。，、：！？；'.indexOf(t) ){
                 x+=h*0.6;
                 y+=w*0.5;    
             } else {
@@ -75,7 +75,7 @@ const drawUnit=async (ctx,unit,x,y,w,h,layout)=>{
             
         }
         //「『（《」』）》﹁﹃︻︵︽﹂﹄︼︶︾ , pdf cannot draw correctly, create new page
-        if (~'。，！？?；：「『」』﹁﹃﹂﹄'.indexOf(t)) {
+        if (~'。，、！？?；：「『」』﹁﹃﹂﹄'.indexOf(t)) {
             const fontsize=layout.fontsize;
             layout.fontsize=fontsize*fontratio;
             drawText(ctx,t,x,y,w,h,layout);
