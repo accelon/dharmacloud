@@ -20,7 +20,7 @@ $: console.log($printpagenumber)
     雲端注釋預覽
     <a href='https://dharmacloud.github.io' target="_new" id="downloadlink"> </a>
     <span>
-        <Paging bind:from last={$pagestarts.length-1}/>
+        <Paging bind:from last={$pagestarts.length-2}/>
     </span>
     <label>頁碼<input type="checkbox" bind:checked={$printpagenumber} caption="x"/></label>
     <Button onclick={print}>💾PDF</Button>

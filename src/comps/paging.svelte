@@ -9,7 +9,7 @@ const prev=()=>{
     if (from<0) from=0;
 }
 const next=()=>{
-    if (from+5 < last) from+=PAGESIZE;
+    if (from+1 < last) from+=PAGESIZE;
 }
 </script>
 <Button onclick={prev}>{from+1}/</Button><Button onclick={next}>{last}</Button>
