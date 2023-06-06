@@ -38,12 +38,13 @@ export const splitUnit=async (value)=>{
         }
 
         if (cjkrange) {
-
             units.push({adv:true,t:ch,inverse});
         } else {
             if (ch=='\n') {
                 if (i&& chars[i-1]!=='\n') {
-                    units.push({adv:true, t:'https://DHARMACLOUD.GITHUB.IO/?'+get(bkname)+'.'+ck+':'+lineoff ,  type:'qrcode'})
+                    const t='https://DHARMACLOUD.GITHUB.IO/?'+get(bkname)+'.'+(ck||'0')+':'+lineoff
+                    console.log(t)
+                    units.push({adv:true, t ,  type:'qrcode'})
                 }
                 lineoff++;
             }
