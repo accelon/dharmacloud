@@ -1,6 +1,8 @@
 ^:<ptk=dc zh=法雲 en=dc lang=zh align=dc>
-^:au
-^:pb<id=unique>
+^:au<bracket=false>
+^:pb<id=unique resetby=bk>
+^:folio<id=unique>
 ^:lb
 ^:gatha
 ^:e<id=unique>
+^ak#vcpp【金剛經】
