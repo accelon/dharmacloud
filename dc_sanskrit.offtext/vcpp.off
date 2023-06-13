@@ -10,7 +10,8 @@ atha khalu sambahulā bhikṣavo yena Bhagavāṃs tenopasaṃkraman upa saṃkr
 ^ck2【Subhuti makes a request】
  tena khalu punaḥ samayena āyuṣmān subhūtis tasyām eva parṣadi saṃnipatito 'bhūt saṃniṣaṇṇaḥ |
  atha khalv āyuṣmān subhūtir utthāya-āsanād ekāṃsam uttarāsaṅgaṃ kṛtvā dakṣiṇaṃ jānu-maṇḍalaṃ pṛthivyāṃ pratiṣṭhāpya yena bhagavāṃs tena añjaliṃ praṇamya bhagavantam etad avocat |
- āścaryaṃ bhagavan parama-āścaryaṃ sugata yāvad eva tathāgatena-arhatā samyaksaṃbuddhena bodhisattvā mahāsattvā anuparigṛhītāḥ parameṇa anugraheṇa | āścaryaṃ bhagavan yāvad eva tathāgatenārhatā samyaksaṃbuddhena bodhisattvā mahāsattvāḥ parīnditāḥ paramayā parīndanayā |
+ āścaryaṃ bhagavan parama-āścaryaṃ sugata yāvadeva tathāgatena-arhatā samyaksaṃbuddhena bodhisattvā mahāsattvā anuparigṛhītāḥ parameṇa anugraheṇa |
+ āścaryaṃ bhagavan yāvadeva tathāgatenārhatā samyaksaṃbuddhena bodhisattvā mahāsattvāḥ parīnditāḥ paramayā parīndanayā |
  tat kathaṃ bhagavan bodhisattvayāna saṃprasthitena kulaputreṇa vā kuladuhitrā vā sthātavyaṃ | kathaṃ pratipattavyaṃ | kathaṃ cittaṃ pragrahītavyam |
  evam ukte bhagavān āyuṣmantaṃ subhūtim etad avocat | sādhu sādhu subhūte evam etad yathā vadasi |
  anuparigṛhītās tathāgatena bodhisattvā mahāsattvāḥ parameṇa anugraheṇa| 
@@ -143,7 +144,7 @@ tatkasya hetoḥ | sacen me subhūte tasmin samaya ātma-saṃjñā-abhaviṣyad
 tatkasya hetoḥ | abhijānāmy ahaṃ subhūte 'tīte 'dhvani pañca jāti-śatāni yad ahaṃ kṣāntivādī ṛṣir abhūvam | tatra api me nātma-saṃjñā babhūvana sattva-saṃjñā na jīva-saṃjñā na pudgala-saṃjñā babhūva |
 tasmāt tarhi subhūte bodhisattvena mahāsattvena sarva-saṃjñā vivarjayitvā anuttarāyāṃ samyaksaṃbodhau cittam utpādayitavyam |
  na rūpa-pratiṣṭhitaṃ cittam utpādayitavyaṃ na śabda-gandha-rasa-spraṣṭavya-dharma-pratiṣṭhitaṃ cittam utpādayitavyaṃ na dharma-pratiṣṭhitaṃ cittam utpādayitavyaṃ na adharma-pratiṣṭhitaṃ cittam  utpādayitavyaṃ na kvacit pratiṣṭhitaṃ cittam  utpādayitavyam |
-tatkasya hetoḥ | yat pratiṣṭhitaṃ tad eva apratiṣṭhitam | tasmād eva tathāgato bhāṣate apratiṣṭhitena bodhisattvena dānaṃ dātavyam | na rūpa-śabda-gandha-rasa-spraṣṭavya-dharma-pratiṣṭhitena dānaṃ dātavyam |
+tatkasya hetoḥ | yat pratiṣṭhitaṃ tadeva apratiṣṭhitam | tasmādeva tathāgato bhāṣate apratiṣṭhitena bodhisattvena dānaṃ dātavyam | na rūpa-śabda-gandha-rasa-spraṣṭavya-dharma-pratiṣṭhitena dānaṃ dātavyam |
 api tu khalu punaḥ subhūte bodhisattvenaivaṃrūpo dānaparityāgaḥ kartavyaḥ sarva-sattvānām arthāya | 
 tatkasya hetoḥ | yā caiṣā subhūte sattva-saṃjñā saivāsaṃjñā |
  ya evaṃ te sarva-sattvās tathāgatena bhāṣitās ta evāsattvāḥ |
@@ -284,7 +285,7 @@ na khalu punaḥ subhūte bodhisattvena mahāsattvena puṇyaskandhaḥ parigrah
 api tu khalu punaḥ subhūte yaḥ kaścid evaṃ vadet tathāgato gacchati vā āgacchati vā tiṣṭhati vā niṣīdati vā śayyāṃ vā kalpayati na me subhūte sa bhāṣitasya artham ājānāti |
 tatkasya hetoḥ | tathāgata iti subhūta ucyate na kvacidgato na kutaścid āgataḥ | tenocyate tathāgato 'rhan samyaksaṃbuddha iti ||29||
 ^ck30【The material world】
-yaś ca khalu punaḥ subhūte kulaputro vā kuladuhitā vā yāvantas trisāhasra-mahāsāhasre lokadhātau pṛthivī-rajāṃsi tāvatāṃ lokadhātūnām evaṃrūpaṃ maṣiṃ kuryāt yāvad evam asaṃkhyeyena vīryeṇa tadyathāpi nāma paramāṇu-saṃcayaḥ tat kiṃ manyase subhūte api nu bahuḥ sa paramāṇu-saṃcayo bhavet |
+yaś ca khalu punaḥ subhūte kulaputro vā kuladuhitā vā yāvantas trisāhasra-mahāsāhasre lokadhātau pṛthivī-rajāṃsi tāvatāṃ lokadhātūnām evaṃrūpaṃ maṣiṃ kuryāt yāvadevam asaṃkhyeyena vīryeṇa tadyathāpi nāma paramāṇu-saṃcayaḥ tat kiṃ manyase subhūte api nu bahuḥ sa paramāṇu-saṃcayo bhavet |
 subhūtir āha | evam etad bhagavann evam etat sugata | bahuḥ sa paramāṇu-saṃcayo bhavet |
 tatkasya hetoḥ | saced bhagavan bahuḥ paramāṇu-saṃcayo 'bhaviṣyat na bhagavān avakṣyat paramāṇu-saṃcaya iti |
 tatkasya hetoḥ | yo 'sau bhagavan paramāṇu-saṃcayas tathāgatena bhāṣito'samcayaḥ sa tathāgatena bhāṣitaḥ | tenocyate paramāṇu-saṃcaya iti |
