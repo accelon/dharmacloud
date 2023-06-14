@@ -1,6 +1,7 @@
 ^:<ptk=dc zh=法雲 en=dc lang=zh align=dc>
 ^:au<bracket=false>
 ^:pb<id=unique resetby=bk>
+^:r<id=unique resetby=bk>
 ^:folio<id=unique>
 ^:lb
 ^:gatha
