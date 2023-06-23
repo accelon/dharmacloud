@@ -1,4 +1,4 @@
-import {nodefs,writeChanged,readTextContent, readTextLines } from 'ptk/nodebundle.cjs'; //ptk/pali
+import {nodefs,writeChanged,readTextContent, readTextLines, fromObj } from 'ptk/nodebundle.cjs'; //ptk/pali
 await nodefs;
 let clsmissmatch=0,zhmissmatch=0, lemmacount=0,repeatcount=0;
 const parseDictLine=line=>{
@@ -9,7 +9,7 @@ const parseDictLine=line=>{
     root=(root||'').replace(/[\)）]/,'').trim();
 
     let [cls,languages]=body.split('。');
-    cls=(cls||'').split(/[，、]/).join('|')
+    cls=(cls||'').trim().split(/[，、]/).join('|')
     let zh='',tb='',en='';
     if (!languages) {
         console.log(line)
@@ -27,8 +27,9 @@ const parseDictLine=line=>{
     }
 
     if (zh.match(/[a-z]/)) {
-        console.log(zh)
+        // console.log(zh)
     }
+    lemma=lemma.trim();
     return {lemma,root,cls,zh,tb,en}
 }
 const lines=readTextLines('nissaya.off');
@@ -70,12 +71,12 @@ for (let i=0;i<lines.length;i++) {
         const {lemma,root,cls,zh,tb,en}=parseDictLine(line);
         lemmacount++;
         if (!dict[lemma]) {
-            dict[lemma]={lemma,root,cls,zh,tb,en};
+            dict[lemma]={lemma,root,cls,zh,tb,en,count:1};
         } else {
             const entry=dict[lemma];
             repeatcount++;
             // if (root!==entry.root) console.log(lemma,'root missmatch',entry.root,root);
-
+            entry.count++;
             addField(entry,'cls',cls);
             addField(entry,'zh',zh);
             addField(entry,'tb',tb);
@@ -101,5 +102,8 @@ for (let i=0;i<lines.length;i++) {
 //  console.log(lemmacount,'lemmacount')
 //  console.log(repeatcount,'repeatcount')
 
+const arr=fromObj(dict,(a,b)=>[b.lemma+'\t'+b.count+'\t'+b.root+'\t'+b.zh+'\t'+b.cls]);
 
-console.log(dict)
+writeChanged('vcppdict.tsv',arr.join('\n'),true)
+writeChanged('vcppdict.json',JSON.stringify(dict,'',' '),true)
+// console.log(dict)
