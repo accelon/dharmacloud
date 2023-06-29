@@ -24,4 +24,5 @@ https://www2.hf.uio.no/polyglotta/index.php?page=record&vid=1175&mid=1992992
 
 
 node gen-timestamp.js
-產生 時間軸  off/timestamp.tsv
+產生 時間軸  off/timestamp.tsv 及 off/timestamp_sanskrit.tsv
+

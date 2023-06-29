@@ -1,9 +1,9 @@
 /*
 from: https://docs.google.com/spreadsheets/d/1MVVBbS60aHA1QfQrj9n9ghuUiy5rx6F1rNDBKFa2Ti8/edit#gid=532868174
 */
-import { venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi} from './timestamp_vcpp.js'
+import { venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi,fayewong} from './timestamp_vcpp.js'
 import { fayewong_pph} from './timestamp_pph.js'
-import { fayewongzhang_pphs} from './timestamp_pphs.js'
+import { fayewongzhang_pphs,sanskrit_pphs, sanskrit_pphs_sanskrit} from './timestamp_pphs.js'
 import {writeChanged,nodefs} from 'ptk/nodebundle.cjs'
 await nodefs
 const parseTime=str=>{
@@ -16,8 +16,9 @@ const parseTime=str=>{
     }
     return parseInt(m)*60+parseInt(s);
 }
-const out=['^:<name=timestamp preload=true>youtube\tbookid\tperformer\ttimestamp=numbers']
-const dump=(book,_tracks)=>{
+const zhout=['^:<name=timestamp preload=true>youtube\tbookid\tperformer\ttimestamp=numbers']
+const skout=['^:<name=timestamp_sanskrit preload=true>youtube\tbookid\tperformer\ttimestamp=numbers']
+const dump=(book,_tracks,out)=>{
     let prev=0;
     for (let n in _tracks) {
         const lines=_tracks[n].split(/\r?\n/);
@@ -41,11 +42,20 @@ const dump=(book,_tracks)=>{
 
 
 const tracks={
-    'vcpp_kumarajiva':{venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi},
+    'vcpp_kumarajiva':{venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi,fayewong},
     'pph':{fayewong:fayewong_pph},
-    'pphs':{fayewongzhang:fayewongzhang_pphs},
-};
-for (let book in tracks) {
-    dump(book,tracks[book])
+    'pphs':{fayewongzhang:fayewongzhang_pphs,sanskrit_pphs},
 }
-writeChanged('off/timestamp.tsv', out.join('\n') ,true)
+const sktracks={
+    'pphs':{sanskrit_pphs_sanskrit,sanskrit_pphs_sanskrit2:sanskrit_pphs_sanskrit},
+}
+for (let book in tracks) {
+    dump(book,tracks[book],zhout)
+}
+writeChanged('off/timestamp.tsv', zhout.join('\n') ,true)
+
+for (let book in sktracks) {
+    dump(book,sktracks[book],skout)
+}
+writeChanged('off/timestamp_sanskrit.tsv', skout.join('\n') ,true)
+
