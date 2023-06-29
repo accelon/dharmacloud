@@ -18,3 +18,10 @@ dharmacloud selected text
  https://docs.google.com/spreadsheets/d/1MVVBbS60aHA1QfQrj9n9ghuUiy5rx6F1rNDBKFa2Ti8/edit#gid=1457692547
 
  
+
+心經梵文:
+https://www2.hf.uio.no/polyglotta/index.php?page=record&vid=1175&mid=1992992
+
+
+node gen-timestamp.js
+產生 時間軸  off/timestamp.tsv
