@@ -1,7 +1,7 @@
 /*
 from: https://docs.google.com/spreadsheets/d/1MVVBbS60aHA1QfQrj9n9ghuUiy5rx6F1rNDBKFa2Ti8/edit#gid=532868174
 */
-import { venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi,fayewong} from './timestamp_vcpp.js'
+import { venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi,fayewong_youtube,fayewong_tencent} from './timestamp_vcpp.js'
 import { fayewong_pph} from './timestamp_pph.js'
 import { fayewongzhang_pphs,sanskrit_pphs, sanskrit_pphs_sanskrit} from './timestamp_pphs.js'
 import {writeChanged,nodefs} from 'ptk/nodebundle.cjs'
@@ -16,13 +16,14 @@ const parseTime=str=>{
     }
     return parseInt(m)*60+parseInt(s);
 }
-const zhout=['^:<name=timestamp preload=true>youtube\tbookid\tperformer\ttimestamp=numbers']
-const skout=['^:<name=timestamp_sanskrit preload=true>youtube\tbookid\tperformer\ttimestamp=numbers']
+const zhout=['^:<name=timestamp preload=true>vid\tvideohost\tbookid\tperformer\ttimestamp=numbers']
+const skout=['^:<name=timestamp_sanskrit preload=true>vid\tvideohost\tbookid\tperformer\ttimestamp=numbers']
 const dump=(book,_tracks,out)=>{
     let prev=0;
     for (let n in _tracks) {
         const lines=_tracks[n].split(/\r?\n/);
-        const youtubeid=lines.shift();
+        const videohost=lines.shift();
+        const videoid=lines.shift();
         const authorname=lines.shift();
         prev=parseTime(lines[0]);
         const times=[];
@@ -36,13 +37,13 @@ const dump=(book,_tracks,out)=>{
             prev=t;
             
         }
-        out.push(youtubeid+'\t'+book+'\t'+authorname+'\t'+times.join(','));
+        out.push(videoid+'\t'+videohost+'\t'+book+'\t'+authorname+'\t'+times.join(','));
     }
 }
 
 
 const tracks={
-    'vcpp_kumarajiva':{venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi,fayewong},
+    'vcpp_kumarajiva':{venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi,fayewong_tencent,fayewong_youtube},
     'pph':{fayewong:fayewong_pph},
     'pphs':{fayewongzhang:fayewongzhang_pphs,sanskrit_pphs},
 }

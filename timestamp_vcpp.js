@@ -1,4 +1,5 @@
-export const venxinding=`m9ZmMrY88qE
+export const venxinding=`youtube
+m9ZmMrY88qE
 心定法師
 7:04
 7:04
@@ -311,7 +312,8 @@ export const venxinding=`m9ZmMrY88qE
 36:18
 36:19
 36:19`
-export const dharmadrum=`RquHJ4jzXKs
+export const dharmadrum=`youtube
+RquHJ4jzXKs
 法鼓山
 0:30
 0:30
@@ -623,7 +625,8 @@ export const dharmadrum=`RquHJ4jzXKs
 24:59
 25:00
 25:00`
-export const venjianhui=`z-IpOREVDHo
+export const venjianhui=`youtube
+z-IpOREVDHo
 見輝法師
 0031
 0031
@@ -935,7 +938,8 @@ export const venjianhui=`z-IpOREVDHo
 2550
 2557
 2558`
-export const jiangxun=`wjvwySjCVoQ
+export const jiangxun=`youtube
+wjvwySjCVoQ
 蔣勳
 0001
 0004
@@ -1247,7 +1251,8 @@ export const jiangxun=`wjvwySjCVoQ
 3254
 3259
 3260`
-export const yangdeshi=`5C4INS3hK40
+export const yangdeshi=`youtube
+5C4INS3hK40
 養德禪寺
 0109
 0109
@@ -1559,7 +1564,8 @@ export const yangdeshi=`5C4INS3hK40
 3328
 3331
 3335`
-export const fayewong=`XpROd_PKBb0
+	
+const fayewong=`
 王菲
 0031
 0035
@@ -1871,3 +1877,5 @@ export const fayewong=`XpROd_PKBb0
 3856
 3901
 3905`
+export const fayewong_tencent="tencent\nw35152ox685"+fayewong
+export const fayewong_youtube="youtube\nXpROd_PKBb0"+fayewong

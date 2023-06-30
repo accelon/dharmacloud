@@ -1,4 +1,5 @@
-export const fayewongzhang_pphs=`P5HI-Yw7Aao
+export const fayewongzhang_pphs=`youtube
+P5HI-Yw7Aao
 王菲張智霖
 0005
 0006
@@ -23,7 +24,8 @@ export const fayewongzhang_pphs=`P5HI-Yw7Aao
 0356`
 
 //連播不好接起來//中文字幕
-export const sanskrit_pphs=`bDOcp6uk584
+export const sanskrit_pphs=`youtube
+bDOcp6uk584
 般禪梵唱
 0046
 0046
