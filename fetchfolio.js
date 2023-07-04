@@ -1,7 +1,7 @@
 import {fetchFolioText,openPtk,writeChanged,nodefs} from 'ptk/nodebundle.cjs'
 
 await nodefs;
-const book=process.argv[3]||'bhaisajya';
+const book=process.argv[2]||'bhaisajya';
 const ptk=await openPtk('dc');
 
 const [text]=await fetchFolioText(ptk,book);
