@@ -26,3 +26,14 @@ https://www2.hf.uio.no/polyglotta/index.php?page=record&vid=1175&mid=1992992
 node gen-timestamp.js
 產生 時間軸  off/timestamp.tsv 及 off/timestamp_sanskrit.tsv
 
+
+
+找出所有詞條
+ptk dump dc dc.txt
+ptk listwords dc.txt zhwiki-20230701-pages-articles-multistream-index.txt
+//rename to dc-wikipedia.csv
+ptk listwords dc.txt fgdzd-entries.txt
+//rename to dc-fgdzd.csv
+
+得到 兩個 csv ，合併產生 tsv
+node gen-dictentry.js
