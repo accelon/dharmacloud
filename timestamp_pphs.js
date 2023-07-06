@@ -50,7 +50,8 @@ bDOcp6uk584
 0406`
 
 //梵文字幕
-export const sanskrit_pphs_sanskrit=`bDOcp6uk584
+export const sanskrit_pphs_sanskrit=`youtube
+bDOcp6uk584
 般禪梵唱
 0046
 0054
