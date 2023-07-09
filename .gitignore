@@ -8,3 +8,7 @@ fonts
 *.ttc
 node_modules
 dc_zh
+*.csv
+*.html
+*.tsv
+*.txt

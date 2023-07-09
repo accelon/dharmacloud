@@ -14,7 +14,7 @@ dharmacloud selected text
  off/zhdict.off                //從中文查梵文
 
 
- node gen-youtube-timestamp.js //產生 每行頁碼及原書圖版換行文字 ，貼到
+ node fetchfolio.js bkid //產生 每行頁碼及原書圖版換行文字 ，貼到
  https://docs.google.com/spreadsheets/d/1MVVBbS60aHA1QfQrj9n9ghuUiy5rx6F1rNDBKFa2Ti8/edit#gid=1457692547
 
  

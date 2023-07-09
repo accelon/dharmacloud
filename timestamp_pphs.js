@@ -81,6 +81,30 @@ bDOcp6uk584
 0355
 0359`
 
+export const chant_pphs=`youtube
+7OXGM0CArAw
+課頌
+0000
+0039
+0040
+0053
+0103
+0114
+0124
+0134
+0144
+0153
+0203
+0212
+0221
+0229
+0237
+0246
+0255
+0257
+0315
+0316`
+
 //from https://docs.google.com/spreadsheets/d/1nSr-rMlk0ns3BB3FYsfCIwFTaREiij53REQKxlAb8p8/edit#gid=1394969850
 export const jackychang_pphs=`youtube
 iL_W8W2737A
