@@ -1566,7 +1566,6 @@ export const yangdeshi=`youtube
 3335`
 	
 const fayewong=`
-王菲
 0031
 0035
 0045
@@ -1877,5 +1876,5 @@ const fayewong=`
 3856
 3901
 3905`
-export const fayewong_tencent="tencent\nw35152ox685"+fayewong
-export const fayewong_youtube="youtube\nXpROd_PKBb0"+fayewong
+export const fayewong_qq="qq\nw35152ox685\n王菲(腾讯)"+fayewong
+export const fayewong_youtube="youtube\nXpROd_PKBb0\n王菲"+fayewong
