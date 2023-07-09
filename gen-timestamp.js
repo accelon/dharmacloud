@@ -4,8 +4,9 @@ from: https://docs.google.com/spreadsheets/d/1MVVBbS60aHA1QfQrj9n9ghuUiy5rx6F1rN
 import { venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi,fayewong_youtube,fayewong_qq} from './timestamp_vcpp.js'
 import { fayewong_pph} from './timestamp_pph.js'
 import { fayewongzhang_pphs,sanskrit_pphs, sanskrit_pphs_sanskrit
-    ,jackychang_pphs,kanhojp_pphs,kanhozh_pphs} from './timestamp_pphs.js'
+    ,jackychang_pphs,kanhojp_pphs,kanhozh_pphs,chant_pphs} from './timestamp_pphs.js'
 import {jianren_bhaisajya,ddm_bhaisajya,zhanyuan_bhaisajya} from './timestamp_bhaisajya.js'
+import {xincheng_amtb_xuanzang} from './timestamp_amtb_xuanzang.js'
 import {writeChanged,nodefs} from 'ptk/nodebundle.cjs'
 await nodefs
 const parseTime=str=>{
@@ -45,9 +46,10 @@ const dump=(book,_tracks,out)=>{
 
 
 const tracks={
+   'amtb_xuanzang':{xincheng_amtb_xuanzang},
     'vcpp_kumarajiva':{venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi,fayewong_qq,fayewong_youtube},
     'pph':{fayewong:fayewong_pph},
-    'pphs':{fayewongzhang:fayewongzhang_pphs,sanskrit_pphs,jackychang_pphs,kanhojp_pphs,kanhozh_pphs},
+    'pphs':{fayewongzhang:fayewongzhang_pphs,sanskrit_pphs,jackychang_pphs,kanhojp_pphs,kanhozh_pphs,chant_pphs},
     'bhaisajya':{ddm_bhaisajya,jianren_bhaisajya,zhanyuan_bhaisajya}
 }
 const sktracks={
