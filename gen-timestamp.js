@@ -14,10 +14,11 @@ const parseTime=str=>{
     if (~str.indexOf(':')) {
         [m,s]=str.trim().split(':');
     } else {
-        m=str.slice(0,2);
-        s=str.slice(2);
+        h=str.slice(0, str.length-4);
+        m=str.slice(str.length-4,str.length-2);
+        s=str.slice(str.length-2);
     }
-    return parseInt(m)*60+parseInt(s);
+    return parseInt(h)*3600+parseInt(m)*60+parseInt(s);
 }
 const zhout=['^:<name=timestamp preload=true>vid\tvideohost\tbookid\tperformer\ttimestamp=numbers']
 const skout=['^:<name=timestamp_sanskrit preload=true>vid\tvideohost\tbookid\tperformer\ttimestamp=numbers']
@@ -47,7 +48,7 @@ const dump=(book,_tracks,out)=>{
 
 const tracks={
    'amtb_xuanzang':{xincheng_amtb_xuanzang},
-    'vcpp_kumarajiva':{venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi,fayewong_qq,fayewong_youtube},
+    'vcpp':{venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi,fayewong_qq,fayewong_youtube},
     'pph':{fayewong:fayewong_pph},
     'pphs':{fayewongzhang:fayewongzhang_pphs,sanskrit_pphs,jackychang_pphs,kanhojp_pphs,kanhozh_pphs,chant_pphs},
     'bhaisajya':{ddm_bhaisajya,jianren_bhaisajya,zhanyuan_bhaisajya}
