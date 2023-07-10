@@ -5,7 +5,7 @@ const book=process.argv[2]||'bhaisajya';
 const ptk=await openPtk('dc');
 
 const [text]=await fetchFolioText(ptk,book);
-const lines=text.join('\n').replace(/\^pb/g,'\n^pb').split('\n')
+const lines=(text||[]).join('\n').replace(/\^pb/g,'\n^pb').split('\n')
 let nsentence=0,pb='1',out=[];
 for (let i=0;i<lines.length;i++) {
     let line=lines[i];

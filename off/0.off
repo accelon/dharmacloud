@@ -2,7 +2,7 @@
 ^:au<bracket=false>
 ^:pb<id=unique resetby=bk>
 ^:r<id=unique resetby=bk>
-^:folio<id=unique>
+^:folio<id=unique reset=pb lines=number bracket=false>
 ^:lb
 ^:gatha
 ^:e<id=unique>
