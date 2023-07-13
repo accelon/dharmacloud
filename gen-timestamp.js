@@ -9,6 +9,7 @@ import { fayewongzhang_pphs,sanskrit_pphs, sanskrit_pphs_sanskrit
     ,jackychang_pphs,kanhojp_pphs,kanhozh_pphs,chant_pphs} from './timestamp_pphs.js'
 import {jianren_bhaisajya,ddm_bhaisajya,zhanyuan_bhaisajya} from './timestamp_bhaisajya.js'
 import {xincheng_amtb_xuanzang} from './timestamp_amtb_xuanzang.js'
+import {ksitigarbha1,ksitigarbha2} from './timestamp_ksitigarbha.js'
 
 import {writeChanged,nodefs} from 'ptk/nodebundle.cjs'
 await nodefs
@@ -57,7 +58,9 @@ const tracks={
     'vcpp_yijing':{vcpp_yijing},
     'pph':{fayewong:fayewong_pph},
     'pphs':{fayewongzhang:fayewongzhang_pphs,sanskrit_pphs,jackychang_pphs,kanhojp_pphs,kanhozh_pphs,chant_pphs},
-    'bhaisajya':{ddm_bhaisajya,jianren_bhaisajya,zhanyuan_bhaisajya}
+    'bhaisajya':{ddm_bhaisajya,jianren_bhaisajya,zhanyuan_bhaisajya},
+'ksitigarbha1':{ksitigarbha1},
+'ksitigarbha2':{ksitigarbha2}
 }
 const sktracks={
     'pphs':{sanskrit_pphs_sanskrit,sanskrit_pphs_sanskrit2:sanskrit_pphs_sanskrit},
