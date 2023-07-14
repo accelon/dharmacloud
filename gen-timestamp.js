@@ -7,7 +7,7 @@ import { venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi,
 import { fayewong_pph} from './timestamp_pph.js'
 import { fayewongzhang_pphs,sanskrit_pphs, sanskrit_pphs_sanskrit
     ,jackychang_pphs,kanhojp_pphs,kanhozh_pphs,chant_pphs} from './timestamp_pphs.js'
-import {jianren_bhaisajya,ddm_bhaisajya,zhanyuan_bhaisajya} from './timestamp_bhaisajya.js'
+import {ddm_bhaisajya,zhanyuan_bhaisajya, bhaisajya_huiping} from './timestamp_bhaisajya.js'
 import {xincheng_amtb_xuanzang} from './timestamp_amtb_xuanzang.js'
 import {ksitigarbha1,ksitigarbha2} from './timestamp_ksitigarbha.js'
 
@@ -58,7 +58,7 @@ const tracks={
     'vcpp_yijing':{vcpp_yijing},
     'pph':{fayewong:fayewong_pph},
     'pphs':{fayewongzhang:fayewongzhang_pphs,sanskrit_pphs,jackychang_pphs,kanhojp_pphs,kanhozh_pphs,chant_pphs},
-    'bhaisajya':{ddm_bhaisajya,jianren_bhaisajya,zhanyuan_bhaisajya},
+    'bhaisajya':{ddm_bhaisajya,zhanyuan_bhaisajya,bhaisajya_huiping},
 'ksitigarbha1':{ksitigarbha1},
 'ksitigarbha2':{ksitigarbha2}
 }
