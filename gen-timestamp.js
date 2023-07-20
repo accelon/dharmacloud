@@ -6,15 +6,20 @@ import { venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi,
     fayewong_youtube,fayewong_qq} from './timestamp_vcpp.js'
 import { fayewong_pph} from './timestamp_pph.js'
 import { fayewongzhang_pphs,sanskrit_pphs, sanskrit_pphs_sanskrit
-    ,jackychang_pphs,kanhojp_pphs,kanhozh_pphs,chant_pphs} from './timestamp_pphs.js'
+    ,jackychang_pphs,kanhojp_pphs,kanhozh_pphs,chant_pphs,kwanyinchanlin} from './timestamp_pphs.js'
 import {ddm_bhaisajya,zhanyuan_bhaisajya, bhaisajya_huiping} from './timestamp_bhaisajya.js'
 import {xincheng_amtb_xuanzang} from './timestamp_amtb_xuanzang.js'
+import {amtb_china} from './timestamp_amtb.js'
 import {ksitigarbha1,ksitigarbha2} from './timestamp_ksitigarbha.js'
-
+import {fgs_pumen} from './timestamp_pumen.js'
+import {lastword} from './timestamp_lastword.js'
+import {sdpdrk1,sdpdrk2,sdpdrk3,sdpdrk4,sdpdrk5,sdpdrk6,sdpdrk7} from './timestamp_sdpdrk.js'
 import {writeChanged,nodefs} from 'ptk/nodebundle.cjs'
+
 await nodefs
 const parseTime=str=>{
     let m=0,s=0,h=0;
+    str=str.trim();
     if (~str.indexOf(':')) {
         [m,s]=str.trim().split(':');
     } else {
@@ -40,7 +45,7 @@ const dump=(book,_tracks,out)=>{
         for (let j=1;j<lines.length;j++) {
             const t=parseTime(lines[j]);
             if (t<prev) {
-                throw "wrong time stamp "+lines[j];
+                throw "wrong time stamp "+lines[j]+' t=' +t+ ' previous '+lines[j-1]+ ' t='+prev;
             }
             times.push(t);
             prev=t;
@@ -53,14 +58,24 @@ const dump=(book,_tracks,out)=>{
 
 const tracks={
    'amtb_xuanzang':{xincheng_amtb_xuanzang},
+   'amtb':{amtb_china},
+   'lastword':{lastword},
     'vcpp':{venxinding,dharmadrum,venjianhui,jiangxun,yangdeshi,fayewong_qq,fayewong_youtube},
     'vcpp_xuanzang':{vcpp_xuanzang},
     'vcpp_yijing':{vcpp_yijing},
+    'pumen':{fgs_pumen},
     'pph':{fayewong:fayewong_pph},
-    'pphs':{fayewongzhang:fayewongzhang_pphs,sanskrit_pphs,jackychang_pphs,kanhojp_pphs,kanhozh_pphs,chant_pphs},
+    'pphs':{fayewongzhang:fayewongzhang_pphs,sanskrit_pphs,jackychang_pphs,kanhojp_pphs,kanhozh_pphs,chant_pphs,kwanyinchanlin},
     'bhaisajya':{ddm_bhaisajya,zhanyuan_bhaisajya,bhaisajya_huiping},
-'ksitigarbha1':{ksitigarbha1},
-'ksitigarbha2':{ksitigarbha2}
+    'ksitigarbha1':{ksitigarbha1},'ksitigarbha2':{ksitigarbha2},
+    'sdpdrk1':{sdpdrk1},
+    'sdpdrk2':{sdpdrk2},
+    'sdpdrk3':{sdpdrk3},
+    'sdpdrk4':{sdpdrk4},
+    'sdpdrk5':{sdpdrk5},
+    'sdpdrk6':{sdpdrk6},
+    'sdpdrk7':{sdpdrk7},
+
 }
 const sktracks={
     'pphs':{sanskrit_pphs_sanskrit,sanskrit_pphs_sanskrit2:sanskrit_pphs_sanskrit},
