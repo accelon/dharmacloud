@@ -6,5 +6,6 @@
 ^:lb
 ^:gatha
 ^:e<id=unique>
-^:cb<id=unique>
+^:cb<id=unique resetby=bk>
 ^:missing<t=text>
+^:mc
