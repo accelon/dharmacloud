@@ -37,3 +37,15 @@ ptk listwords dc.txt fgdzd-entries.txt
 
 得到 兩個 csv ，合併產生 tsv
 node gen-dictentry.js
+
+
+
+## 錯誤記錄
+
+增一阿含卷8  pb3 cb581c10 「持衣钵」「捨除衣钵」
+
+cb585b19 善知識人不作是念....  金剛經原型？
+
+增一 卷23 頁6~10  錯版
+
+cb666a28 大畏之林口=>大畏之狀
