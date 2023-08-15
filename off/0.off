@@ -5,6 +5,7 @@
 ^:folio<id=unique reset=pb lines=number bracket=false>
 ^:lb
 ^:gatha
+^:m<id=unique resetby=ck>
 ^:e<id=unique>
 ^:cb<id=unique resetby=bk>
 ^:missing<t=text>

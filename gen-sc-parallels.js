@@ -1,4 +1,4 @@
-import {fromObj,nodefs,writeChanged,readTextContent, readTextLines } from 'ptk/nodebundle.cjs'; //ptk/pali
+import {fromObj,nodefs,writeChanged,readTextContent, unique } from 'ptk/nodebundle.cjs'; //ptk/pali
 await nodefs;
 import {mapaddress} from './mapaddress.js'
 const fn='parallels.json';
@@ -110,7 +110,7 @@ for (let i=0;i<parallels.length;i++) {
 
 
 for (let name in out) {
-    const arr=fromObj(out[name],(a,b)=>a+'\t' +b.filter(it=>!!it).join(','));
+    const arr=fromObj(out[name],(a,b)=>a+'\t' +unique(b.filter(it=>!!it)).join(','));
     arr.sort();
     arr.unshift('^:<name=par_'+name+' preload=true>id	parallels')
     writeChanged( 'off/parallels-'+name+'.tsv',arr.join('\n'),true)
