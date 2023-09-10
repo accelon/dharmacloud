@@ -1,4 +1,4 @@
-import {fromObj,nodefs,writeChanged,readTextContent, unique } from 'ptk/nodebundle.cjs'; //ptk/pali
+import {fromObj,nodefs,writeChanged,readTextContent,meta_cs, unique } from 'ptk/nodebundle.cjs'; //ptk/pali
 await nodefs;
 import {mapaddress} from './mapaddress.js'
 const fn='parallels.json';
@@ -12,7 +12,18 @@ const patterns=[
     ['agmss',/sa\-2\.(\d+)/, '',''],
     ['agmm',/ma(\d+)/,'',''] ,
     ['agmd',/da(\d+)/,'',''] ,
-    ['agmu',/ea([\d\.]+)/,'','']  //卷 經
+    ['agmu',/ea([\d\.]+)/,'',''],  //卷 經
+    
+    ['sn',/sn([\d\.]+)/,'',''],
+    ['an',/an([\d\.]+)/,'',''],
+    ['mn',/mn(\d+)/,'',''],
+    ['dn',/dn(\d+)/,'',''],
+
+    //partial parallels are not supported yet,
+    //to be done by SC https://discourse.suttacentral.net/t/sutta-parallels-codes/26910/4
+    ['mn',/mn(\d+)#(\d+)/,'',''],//mn with line number
+    ['dn',/dn(\d+)#(\d+)/,'',''],
+
 ]
 
 const out={};
@@ -36,6 +47,10 @@ const parallels=JSON.parse(readTextContent(fn));
 }));
 */
 
+const SNno=id=>{ //SC 的 相應部經號每個相應重置
+    const  [sam, n] = id.split(".");
+    return parseInt(n)+parseInt(meta_cs.FirstPN['s'+sam+'a'])-1;
+}
 writeChanged('convert.txt',JSON.stringify(parallels,'',' '))
 const makeAddress=(entry,name,id)=>{
     if (name=='agmss') return 'bk#agmss.n#'+id;
@@ -50,6 +65,15 @@ const makeAddress=(entry,name,id)=>{
         return 'bk#agmd.ck#'+id;
     } else if (name=='agmm') {
         return 'bk#agmm.ck#'+id;
+    } else if (name=='dn') {
+        return 'ck#d'+id;
+    } else if (name=='mn') {
+        return 'ck#m'+id;
+    } else if (name=='sn') {
+        //convert to ^n
+        return 'ck#s'+id.split(".")[0]+'.n'+SNno(id);
+    } else if (name=='an') {
+        return 'ck#a'+id;
     }
     return entry;
 }
@@ -72,7 +96,6 @@ for (let i=0;i<parallels.length;i++) {
         for (let k=0;k<patterns.length;k++) {
             const m=entry.match(patterns[k][1]);
             if (m) {
-                
                 patterns[k][2]=m[1];
                 patterns[k][3]=makeAddress(entry,patterns[k][0],m[1]);
                 count++;
@@ -101,9 +124,13 @@ for (let i=0;i<parallels.length;i++) {
         
         const par2=par.filter(it=>!!it);
         if (par2.length) {
+            let id=key;
+            if (name=='sn') {
+                id= key.split(".")[0]+'.'+SNno(key);
+            }
             if (!out[name]) out[name]=[];
-            if (!out[name][key]) out[name][key]=[];
-            out[name][key].push( ...par );
+            if (!out[name][id]) out[name][id]=[];
+            out[name][id].push( ...par );
         }
     }
 }
@@ -113,5 +140,9 @@ for (let name in out) {
     const arr=fromObj(out[name],(a,b)=>a+'\t' +unique(b.filter(it=>!!it)).join(','));
     arr.sort();
     arr.unshift('^:<name=par_'+name+' preload=true>id	parallels')
-    writeChanged( 'off/parallels-'+name+'.tsv',arr.join('\n'),true)
+    if (name.match(/[dmsa]n/)) {
+        writeChanged( '../cs/off/parallels-'+name+'.tsv',arr.join('\n'),true);
+    } else {
+        writeChanged( 'off/parallels-'+name+'.tsv',arr.join('\n'),true);
+    }
 }
