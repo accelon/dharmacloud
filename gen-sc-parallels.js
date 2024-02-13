@@ -66,14 +66,14 @@ const makeAddress=(entry,name,id)=>{
     } else if (name=='agmm') {
         return 'bk#agmm.ck#'+id;
     } else if (name=='dn') {
-        return 'ck#d'+id;
+        return 'ak#dn.ck#d'+id;
     } else if (name=='mn') {
-        return 'ck#m'+id;
+        return 'ak#mn.ck#m'+id;
     } else if (name=='sn') {
         //convert to ^n
-        return 'ck#s'+id.split(".")[0]+'.n'+SNno(id);
+        return 'ak#sn.ck#s'+id.split(".")[0]+'.n'+SNno(id);
     } else if (name=='an') {
-        return 'ck#a'+id;
+        return 'ak#an.ck#a'+id;
     }
     return entry;
 }
